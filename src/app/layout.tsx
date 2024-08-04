@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Topbar from "@/components/Topbar";
 import { Montserrat } from "next/font/google";
+import WalletContextProvider from "@/utils/WalletContextProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,8 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.className}`}>
-        <Topbar />
-        {children}
+        <WalletContextProvider>
+          <Topbar />
+          {children}
+        </WalletContextProvider>
       </body>
     </html>
   );
